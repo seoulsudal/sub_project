@@ -126,8 +126,10 @@
     img.alt = "";
     img.loading = "lazy";
     img.referrerPolicy = "no-referrer";
-    img.addEventListener("load", () => box.prepend(img));
+    // lazy 이미지는 화면에 붙어 있어야 로딩이 시작되므로 먼저 붙이고, 실패하면 떼어내 플레이스홀더를 보여준다
+    img.addEventListener("error", () => img.remove());
     img.src = src;
+    box.prepend(img);
   }
 
   function makeCard(item, index) {
