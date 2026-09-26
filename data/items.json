@@ -1,0 +1,129 @@
+{
+  "updatedAt": "2026-09-26T00:00:00+09:00",
+  "note": "UI 확인용 샘플 데이터입니다. 좌표·요금·연령은 대략적인 값이며, scripts/fetch-data.mjs 실행 시 실제 API 데이터로 대체됩니다.",
+  "items": [
+    {
+      "id": "sample-place-01", "type": "place", "title": "국립중앙박물관 어린이박물관", "region": "서울", "district": "용산구",
+      "address": "서울 용산구 서빙고로 137", "lat": 37.5240, "lng": 126.9803, "image": null,
+      "isFree": true, "indoor": true, "ages": ["3-5", "6-7", "8-9"],
+      "officialUrl": "https://www.museum.go.kr/site/child/home", "tel": null, "source": "sample",
+      "summary": "전시를 보고 만지고 체험하는 어린이 전용 박물관입니다. 인기가 많아 사전 예약 여부를 확인하세요."
+    },
+    {
+      "id": "sample-place-02", "type": "place", "title": "서울대공원", "region": "경기", "district": "과천시",
+      "address": "경기 과천시 대공원광장로 102", "lat": 37.4275, "lng": 127.0170, "image": null,
+      "isFree": false, "indoor": false, "ages": ["all"],
+      "officialUrl": "https://grandpark.seoul.go.kr", "tel": null, "source": "sample",
+      "summary": "동물원과 식물원, 산책로가 있는 대형 공원입니다. 걷는 거리가 길어 유모차가 있으면 편해요."
+    },
+    {
+      "id": "sample-place-03", "type": "place", "title": "서울어린이대공원", "region": "서울", "district": "광진구",
+      "address": "서울 광진구 능동로 216", "lat": 37.5484, "lng": 127.0819, "image": null,
+      "isFree": true, "indoor": false, "ages": ["0-2", "3-5", "6-7", "8-9"],
+      "officialUrl": "https://www.sisul.or.kr/open_content/childrenpark/", "tel": null, "source": "sample",
+      "summary": "입장은 무료이고 동물원, 놀이시설, 잔디밭이 있어 나들이하기 좋습니다. 일부 시설은 유료입니다."
+    },
+    {
+      "id": "sample-place-04", "type": "place", "title": "국립과천과학관", "region": "경기", "district": "과천시",
+      "address": "경기 과천시 상하벌로 110", "lat": 37.4353, "lng": 127.0093, "image": null,
+      "isFree": false, "indoor": true, "ages": ["3-5", "6-7", "8-9", "10-12"],
+      "officialUrl": "https://www.sciencecenter.go.kr", "tel": null, "source": "sample",
+      "summary": "체험형 전시가 많은 과학관입니다. 상설전시관 요금과 무료 전시는 공식 사이트에서 확인하세요."
+    },
+    {
+      "id": "sample-place-05", "type": "place", "title": "롯데월드 아쿠아리움", "region": "서울", "district": "송파구",
+      "address": "서울 송파구 올림픽로 300", "lat": 37.5139, "lng": 127.1027, "image": null,
+      "isFree": false, "indoor": true, "ages": ["all"],
+      "officialUrl": "https://www.lotteworld.com/aquarium", "tel": null, "source": "sample",
+      "summary": "비 오는 날에도 갈 수 있는 실내 수족관입니다."
+    },
+    {
+      "id": "sample-place-06", "type": "place", "title": "서울숲", "region": "서울", "district": "성동구",
+      "address": "서울 성동구 뚝섬로 273", "lat": 37.5444, "lng": 127.0374, "image": null,
+      "isFree": true, "indoor": false, "ages": ["all"],
+      "officialUrl": "https://seoulforest.or.kr", "tel": null, "source": "sample",
+      "summary": "넓은 잔디와 곤충식물원, 물놀이 공간이 있는 도심 속 공원입니다."
+    },
+    {
+      "id": "sample-place-07", "type": "place", "title": "국립민속박물관 어린이박물관", "region": "서울", "district": "종로구",
+      "address": "서울 종로구 삼청로 37", "lat": 37.5826, "lng": 126.9811, "image": null,
+      "isFree": true, "indoor": true, "ages": ["3-5", "6-7", "8-9"],
+      "officialUrl": "https://www.nfm.go.kr", "tel": null, "source": "sample",
+      "summary": "옛 생활을 놀이처럼 체험하는 어린이 전시관입니다. 이용 방법은 공식 사이트에서 확인하세요."
+    },
+    {
+      "id": "sample-place-08", "type": "place", "title": "에버랜드", "region": "경기", "district": "용인시",
+      "address": "경기 용인시 처인구 에버랜드로 199", "lat": 37.2941, "lng": 127.2028, "image": null,
+      "isFree": false, "indoor": false, "ages": ["3-5", "6-7", "8-9", "10-12"],
+      "officialUrl": "https://www.everland.com", "tel": null, "source": "sample",
+      "summary": "놀이기구와 동물원을 함께 즐기는 대형 테마파크입니다."
+    },
+    {
+      "id": "sample-place-09", "type": "place", "title": "국립고궁박물관", "region": "서울", "district": "종로구",
+      "address": "서울 종로구 효자로 12", "lat": 37.5776, "lng": 126.9744, "image": null,
+      "isFree": true, "indoor": true, "ages": ["6-7", "8-9", "10-12"],
+      "officialUrl": "https://www.gogung.go.kr", "tel": null, "source": "sample",
+      "summary": "조선 왕실 유물을 볼 수 있는 박물관입니다. 경복궁과 함께 둘러보기 좋습니다."
+    },
+    {
+      "id": "sample-place-10", "type": "place", "title": "서울식물원", "region": "서울", "district": "강서구",
+      "address": "서울 강서구 마곡동로 161", "lat": 37.5686, "lng": 126.8350, "image": null,
+      "isFree": false, "indoor": null, "ages": ["all"],
+      "officialUrl": "https://botanicpark.seoul.go.kr", "tel": null, "source": "sample",
+      "summary": "온실과 야외 정원이 함께 있어 날씨에 맞춰 코스를 고를 수 있습니다."
+    },
+    {
+      "id": "sample-place-11", "type": "place", "title": "경기도어린이박물관", "region": "경기", "district": "용인시",
+      "address": "경기 용인시 기흥구 상갈로 6", "lat": 37.2867, "lng": 127.1121, "image": null,
+      "isFree": false, "indoor": true, "ages": ["0-2", "3-5", "6-7", "8-9"],
+      "officialUrl": "https://gcm.ggcf.kr", "tel": null, "source": "sample",
+      "summary": "영유아부터 초등 저학년까지 체험하며 놀 수 있는 어린이 박물관입니다."
+    },
+    {
+      "id": "sample-place-12", "type": "place", "title": "송도 센트럴파크", "region": "인천", "district": "연수구",
+      "address": "인천 연수구 송도동", "lat": 37.3925, "lng": 126.6395, "image": null,
+      "isFree": true, "indoor": false, "ages": ["all"],
+      "officialUrl": null, "tel": null, "source": "sample",
+      "summary": "해수를 끌어온 수로와 넓은 산책로가 있는 공원입니다. 자전거와 보트 등 일부는 유료입니다."
+    },
+    {
+      "id": "sample-place-13", "type": "place", "title": "서울시립과학관", "region": "서울", "district": "노원구",
+      "address": "서울 노원구 한글비석로 160", "lat": 37.6280, "lng": 127.0800, "image": null,
+      "isFree": null, "indoor": true, "ages": ["6-7", "8-9", "10-12"],
+      "officialUrl": "https://science.seoul.go.kr", "tel": null, "source": "sample",
+      "summary": "요금은 전시에 따라 다를 수 있어 공식 사이트에서 확인이 필요합니다."
+    },
+    {
+      "id": "sample-event-01", "type": "event", "title": "[샘플] 가을 어린이 체험 페스티벌", "region": "서울", "district": "광진구",
+      "address": "서울 광진구 능동로 216 일대", "lat": 37.5484, "lng": 127.0819, "image": null,
+      "startDate": "2026-09-26", "endDate": "2026-10-04",
+      "isFree": true, "indoor": false, "ages": ["3-5", "6-7", "8-9"],
+      "officialUrl": null, "tel": null, "source": "sample",
+      "summary": "화면 확인용 가짜 행사입니다. 실제 행사가 아닙니다."
+    },
+    {
+      "id": "sample-event-02", "type": "event", "title": "[샘플] 영유아 그림책 전시", "region": "경기", "district": "용인시",
+      "address": "경기 용인시 기흥구 상갈로 6", "lat": 37.2867, "lng": 127.1121, "image": null,
+      "startDate": "2026-09-01", "endDate": "2026-10-31",
+      "isFree": false, "indoor": true, "ages": ["0-2", "3-5"],
+      "officialUrl": null, "tel": null, "source": "sample",
+      "summary": "화면 확인용 가짜 행사입니다. 실제 행사가 아닙니다."
+    },
+    {
+      "id": "sample-event-03", "type": "event", "title": "[샘플] 주말 과학 체험 교실", "region": "경기", "district": "과천시",
+      "address": "경기 과천시 상하벌로 110", "lat": 37.4353, "lng": 127.0093, "image": null,
+      "startDate": "2026-09-27", "endDate": "2026-09-27",
+      "isFree": true, "indoor": true, "ages": ["6-7", "8-9", "10-12"],
+      "officialUrl": null, "tel": null, "source": "sample",
+      "summary": "화면 확인용 가짜 행사입니다. 실제 행사가 아닙니다."
+    },
+    {
+      "id": "sample-event-04", "type": "event", "title": "[샘플] 인천 가족 버스킹 데이", "region": "인천", "district": "연수구",
+      "address": "인천 연수구 송도동", "lat": 37.3925, "lng": 126.6395, "image": null,
+      "startDate": "2026-10-10", "endDate": "2026-10-11",
+      "isFree": true, "indoor": false, "ages": ["all"],
+      "officialUrl": null, "tel": null, "source": "sample",
+      "summary": "화면 확인용 가짜 행사입니다. 실제 행사가 아닙니다."
+    }
+  ]
+}

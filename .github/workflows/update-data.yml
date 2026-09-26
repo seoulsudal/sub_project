@@ -1,0 +1,58 @@
+name: 데이터 수집 및 배포
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 21 * * *" # 매일 06:00 (KST)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # TourAPI 상세 조회 결과를 실행 간에 재사용해 일일 호출 제한(1,000회)을 아낀다
+      - uses: actions/cache@v4
+        with:
+          path: data/cache.json
+          key: tour-cache-${{ github.run_id }}
+          restore-keys: tour-cache-
+
+      - name: 공공 API 데이터 수집
+        env:
+          TOUR_API_KEY: ${{ secrets.TOUR_API_KEY }}
+          SEOUL_API_KEY: ${{ secrets.SEOUL_API_KEY }}
+        run: node scripts/fetch-data.mjs
+
+      # 배포에는 화면 파일과 수집 결과만 포함한다 (cache.json 등은 제외)
+      - name: 배포 파일 구성
+        run: |
+          mkdir _site
+          cp index.html style.css app.js _site/
+          mkdir _site/data
+          cp data/items.json _site/data/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

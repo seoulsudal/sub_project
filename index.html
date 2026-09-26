@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>아이랑 어디가 · 수도권 나들이</title>
+  <meta name="description" content="서울·경기·인천에서 아이와 가기 좋은 장소와 행사를 연령, 실내·야외, 무료 조건으로 찾아보세요.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="eyebrow" id="greeting">수도권 나들이</div>
+        <h1>아이랑 <em>어디</em>가</h1>
+        <p class="lead">서울 · 경기 · 인천에서 아이와 가기 좋은 곳과 행사를 모았어요.</p>
+      </div>
+      <div class="clock">
+        <div class="time" id="time">--:--</div>
+        <div class="date" id="date"></div>
+      </div>
+    </header>
+
+    <!-- 이번 주말 행사 (해당 행사가 없으면 스크립트가 숨김) -->
+    <section class="weekend" id="weekend" hidden aria-labelledby="weekend-title">
+      <div class="section-head">
+        <h2 id="weekend-title">이번 주말 행사</h2>
+        <span class="range" id="weekend-range"></span>
+      </div>
+      <div class="strip" id="strip"></div>
+    </section>
+
+    <section class="filters" aria-label="검색 조건">
+      <label class="search">
+        <input id="q" type="search" placeholder="장소나 행사 이름, 동네로 검색" autocomplete="off" aria-label="검색">
+        <kbd>/</kbd>
+      </label>
+
+      <div class="filter-row">
+        <span class="filter-label">연령</span>
+        <div class="chips" id="f-age" role="group" aria-label="연령"></div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">장소</span>
+        <div class="chips" id="f-indoor" role="group" aria-label="실내 또는 야외"></div>
+        <div class="chips" id="f-free" role="group" aria-label="요금"></div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">더보기</span>
+        <div class="chips" id="f-region" role="group" aria-label="지역"></div>
+        <div class="chips" id="f-type" role="group" aria-label="유형"></div>
+        <button class="reset" id="reset" type="button" hidden>조건 초기화</button>
+      </div>
+    </section>
+
+    <div class="result-bar">
+      <span id="result-count" aria-live="polite"></span>
+      <span class="hint" id="filter-hint" hidden>조건을 고르면 정보가 확인된 곳만 보여드려요.</span>
+    </div>
+
+    <main>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>조건에 맞는 곳이 없어요. 조건을 조금 줄여보세요.</p>
+      <p class="empty" id="load-error" hidden>데이터를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.</p>
+    </main>
+
+    <footer>
+      <p id="updated"></p>
+      <p>요금·운영시간·예약 여부는 바뀔 수 있으니 방문 전 <strong>공식 사이트에서 꼭 확인</strong>하세요.</p>
+      <p>데이터 출처: 한국관광공사, 서울 열린데이터광장(서울문화포털) · 지도 © OpenStreetMap contributors</p>
+    </footer>
+  </div>
+
+  <!-- 상세 보기 -->
+  <dialog id="detail" aria-labelledby="d-title">
+    <div class="d-inner">
+      <button class="d-close" id="d-close" type="button" aria-label="닫기">×</button>
+      <div class="d-image" id="d-image"></div>
+      <div class="d-body">
+        <div class="badges" id="d-badges"></div>
+        <h2 id="d-title"></h2>
+        <p class="d-summary" id="d-summary"></p>
+        <dl class="d-info" id="d-info"></dl>
+        <div class="d-actions" id="d-actions"></div>
+        <div class="d-map" id="d-map"></div>
+        <p class="d-map-note" id="d-map-note" hidden>위치 정보가 없어 지도를 표시할 수 없어요.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
