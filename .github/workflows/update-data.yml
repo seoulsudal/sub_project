@@ -30,7 +30,7 @@ jobs:
           node-version: 22
 
       # TourAPI 상세 조회 결과를 실행 간에 재사용해 일일 호출 제한(1,000회)을 아낀다
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
           path: data/cache.json
           key: tour-cache-${{ github.run_id }}
@@ -41,6 +41,14 @@ jobs:
           TOUR_API_KEY: ${{ secrets.TOUR_API_KEY }}
           SEOUL_API_KEY: ${{ secrets.SEOUL_API_KEY }}
         run: node scripts/fetch-data.mjs
+
+      # 이후 단계가 실패해도 이미 쓴 API 호출 결과는 남기도록 항상 저장한다
+      - name: 상세 조회 캐시 저장
+        if: always() && hashFiles('data/cache.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: data/cache.json
+          key: tour-cache-${{ github.run_id }}
 
       # 배포에는 화면 파일과 수집 결과만 포함한다 (cache.json 등은 제외)
       - name: 배포 파일 구성
