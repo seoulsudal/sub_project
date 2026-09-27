@@ -4,11 +4,8 @@
   const DATA_URL = "data/items.json";
 
   const AGE_OPTIONS = [
-    { value: "0-2", label: "영아 0~2세" },
-    { value: "3-5", label: "유아 3~5세" },
-    { value: "6-7", label: "6~7세" },
-    { value: "8-9", label: "초등 저학년" },
-    { value: "10-12", label: "초등 고학년" },
+    { value: "preschool", label: "미취학 (영유아·유치원)" },
+    { value: "elementary", label: "초등학생" },
   ];
   const AGE_LABEL = Object.fromEntries(AGE_OPTIONS.map((o) => [o.value, o.label]));
   const SOURCE_LABEL = {

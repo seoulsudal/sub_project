@@ -131,8 +131,8 @@ function inferFree(text) {
   return null;
 }
 
-// 연령 구간: 0~2 영아 / 3~5 유아 / 6~7 예비초등 / 8~9 초등 저학년 / 10~12 초등 고학년 (중학생 이상은 다루지 않음)
-const AGE_BUCKETS = [["0-2", 0, 2], ["3-5", 3, 5], ["6-7", 6, 7], ["8-9", 8, 9], ["10-12", 10, 12]];
+// 연령 구간: 0~7 미취학(영유아·유치원) / 8~12 초등학생 (중학생 이상은 다루지 않음)
+const AGE_BUCKETS = [["preschool", 0, 7], ["elementary", 8, 12]];
 
 // 텍스트에서 대상 연령 태그를 추정한다 (휴리스틱이므로 overrides 로 보정)
 function inferAges(text) {
@@ -151,23 +151,11 @@ function inferAges(text) {
   if (/\d+\s*개월/.test(t)) addRange(0, 2);
 
   // 단어로 표기된 경우
-  if (/영아|신생아|영유아|아기/.test(t)) ages.add("0-2");
-  if (/유아|유치원|미취학/.test(t)) ages.add("3-5");
-  if (/유치원|미취학|예비\s*초등|초등\s*입학/.test(t)) ages.add("6-7");
-  // "예비초등/초등 입학"은 6~7세이므로 일반 "초등" 판별에서 먼저 제거한다
-  const elem = t.replace(/예비\s*초등|초등\s*입학/g, "");
-  let low = /저학년/.test(elem), high = /고학년/.test(elem);
-  for (const m of elem.matchAll(/초등\s*(\d)\s*(?:[~\-]\s*(\d))?\s*학년/g)) {
-    const from = Number(m[1]), to = m[2] ? Number(m[2]) : from;
-    if (from <= 3) low = true;
-    if (to >= 4) high = true;
-  }
-  if (low) ages.add("8-9");
-  if (high) ages.add("10-12");
-  if (/초등/.test(elem) && !low && !high) { ages.add("8-9"); ages.add("10-12"); }
+  if (/영아|신생아|영유아|아기|유아|유치원|미취학|예비\s*초등|초등\s*입학/.test(t)) ages.add("preschool");
+  if (/초등|저학년|고학년/.test(t)) ages.add("elementary");
 
-  // 아이 관련 단어만 있고 나이 정보가 없으면 미취학~초등 저학년으로 본다
-  if (!ages.size && /어린이|키즈|아이/.test(t)) ["3-5", "6-7", "8-9"].forEach((a) => ages.add(a));
+  // 아이 관련 단어만 있고 나이 정보가 없으면 미취학·초등 모두로 본다
+  if (!ages.size && /어린이|키즈|아이/.test(t)) { ages.add("preschool"); ages.add("elementary"); }
   return [...ages];
 }
 
