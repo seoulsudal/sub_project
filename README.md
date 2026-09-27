@@ -54,9 +54,9 @@ TourAPI 개발계정은 하루 1,000회 제한입니다. 상세 조회 결과는
   "add": [
     { "id": "manual-1", "type": "place", "title": "우리동네 놀이터", "region": "경기", "district": "수원시",
       "address": "경기 수원시 …", "lat": 37.28, "lng": 127.0, "image": null,
-      "isFree": true, "indoor": false, "ages": ["3-5", "6-7"], "officialUrl": null, "tel": null, "summary": "" }
+      "isFree": true, "indoor": false, "ages": ["preschool"], "officialUrl": null, "tel": null, "summary": "" }
   ],
-  "patch": { "tour-126508": { "ages": ["0-2", "3-5"], "isFree": true } },
+  "patch": { "tour-126508": { "ages": ["preschool"], "isFree": true } },
   "exclude": ["tour-999999"]
 }
 ```
@@ -67,7 +67,7 @@ TourAPI 개발계정은 하루 1,000회 제한입니다. 상세 조회 결과는
 
 ## 데이터 스키마 (`data/items.json`)
 
-`id, type(place|event), title, region(서울|경기|인천), district, address, lat, lng, image, startDate, endDate(행사만), isFree(true|false|null), indoor(true|false|null), ages(["0-2","3-5","6-7","8-9","10-12","all"]), officialUrl, tel, source, summary`
+`id, type(place|event), title, region(서울|경기|인천), district, address, lat, lng, image, startDate, endDate(행사만), isFree(true|false|null), indoor(true|false|null), ages(["preschool","elementary","all"]), officialUrl, tel, source, summary`
 
 `null`/빈 배열은 "미확인"이며, 필터를 켜면 정보가 확인된 항목만 남습니다.
 
