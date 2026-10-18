@@ -4,7 +4,7 @@
 필터: 연령 · 실내/야외 · 무료 · 지역 · 장소/행사 · 검색. 카드를 누르면 상세(공식 사이트 이동, 지도, 길찾기)가 열립니다.
 
 ```
-GitHub Actions (매일 06:00 KST, 인증키는 Secrets)
+GitHub Actions (수동 실행·main push 시, 인증키는 Secrets)
   └─ scripts/fetch-data.mjs → data/items.json 생성
         └─ GitHub Pages 배포  ← 브라우저는 index.html + app.js + data/items.json 만 읽음 (키 노출 없음)
 ```
@@ -43,7 +43,7 @@ TourAPI 개발계정은 하루 1,000회 제한입니다. 상세 조회 결과는
 1. GitHub 저장소를 만들고 코드를 push (`main` 브랜치)
 2. Settings → Pages → **Source: GitHub Actions**
 3. Settings → Secrets and variables → Actions → `TOUR_API_KEY`, `SEOUL_API_KEY` 등록
-4. Actions 탭 → "데이터 수집 및 배포" → Run workflow (이후 매일 자동 실행)
+4. Actions 탭 → "데이터 수집 및 배포" → Run workflow (예약 실행은 중지됨)
 
 ## 데이터 보정 (`data/overrides.json`)
 
